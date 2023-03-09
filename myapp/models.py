@@ -6,6 +6,9 @@ class Receipt(models.Model):
     issue_date = models.DateTimeField()
     price_per_liter = models.FloatField()
     total_value = models.FloatField()
+
+    owner = models.ForeignKey('auth.User', related_name='receipts', on_delete=models.CASCADE)
+
     
     def __str__(self):
         return "Paid " + str(self.total_value) + " " + "At: " + str(self.price_per_liter) + " per liter"
